@@ -31,12 +31,19 @@ namespace Ejemplodeifelse2.Funciones
 
 
 
-            }// se cerro la conexion
+            }// se cerrot la conexion
         }
 
         public List<Persona> GetAllPersona()
         {
-            return new List<Persona>();
+            List<Persona> personalist = new List<Persona>();
+
+            using (var _context = new AplicationDBContext())
+            {
+                
+                personalist = _context.Personas.ToList();
+            }
+            return personalist;
         }
 
         public Persona ByIDPersona(int PkPersona)

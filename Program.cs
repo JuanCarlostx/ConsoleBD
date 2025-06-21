@@ -17,6 +17,26 @@ switch (opcion)
 {
     case 1:
         Console.WriteLine("Has seleccionado ver la lista");
+        //uso del for each para recorrer la lista de personas
+        List<Persona> Listap = new List<Persona>();
+        Listap = servicios.GetAllPersona();
+
+        foreach (var item in Listap)
+        {
+            Console.WriteLine("------------------------");
+            Console.WriteLine("ID >> "+ item.PKPersona);
+            Console.WriteLine("Nombre >> " + item.Nombre);
+            Console.WriteLine("Apellido >> " + item.Apellido);
+            Console.WriteLine("Correo >> " + item.Correo);
+            Console.WriteLine("Edad >> " + item.edad);
+
+            Console.WriteLine("------------------------");
+        }
+        
+
+        
+
+
         break;
     case 2:
         Console.WriteLine("Has seleccionado crear una persona");
