@@ -53,6 +53,7 @@ namespace Ejemplodeifelse2.Funciones
             using (var _context = new AplicationDBContext())
             {
                 persona = _context.Personas.FirstOrDefault(x => x.PKPersona == PkPersona);
+                
             }
             return persona;
         }
@@ -86,14 +87,27 @@ namespace Ejemplodeifelse2.Funciones
 
             using (var _context = new AplicationDBContext())
             {
-                //uso de find igual a el de persona by id
                 persona = _context.Personas.Find(idpersona.PKPersona);
 
                 _context.Personas.Remove(persona);
                 _context.SaveChanges();
             }
         }
+
+        public void SearchbyID(Persona idpersona) 
+        {
+            Persona persona = new Persona();
+
+            using (var _context = new AplicationDBContext())
+            {
+                persona = _context.Personas.Find(idpersona.PKPersona);
+                Console.WriteLine(persona);
+                _context.SaveChanges();
+            }
+
+        }
         
+
 
     }
 }

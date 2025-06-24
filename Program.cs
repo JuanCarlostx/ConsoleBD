@@ -100,6 +100,17 @@ switch (opcion)
         Console.WriteLine("Se ha elimado con exito");
 
         break;
+    case 5:
+        Console.WriteLine("Haz seleccionado el buscar por id");
+        Persona persona4 = new Persona();
+
+        Console.WriteLine("Ingrese el id a buscar");
+        persona4.PKPersona = int.Parse(Console.ReadLine());
+
+        servicios.SearchbyID(persona4);
+        
+
+        break;
 
     default:
 
