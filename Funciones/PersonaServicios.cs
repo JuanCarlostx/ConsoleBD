@@ -49,17 +49,49 @@ namespace Ejemplodeifelse2.Funciones
         public Persona ByIDPersona(int PkPersona)
         {
             Persona persona = new Persona();
+
+            using (var _context = new AplicationDBContext())
+            {
+                persona = _context.Personas.FirstOrDefault(x => x.PKPersona == PkPersona);
+            }
             return persona;
         }
 
-        public void UpdatePersona (Persona persona)
+        public void UpdatePersona (Persona nuevo)
         {
+            Persona persona = new Persona();
+
+            using (var _context = new AplicationDBContext())
+            {
+                //uso de find igual a el de persona by id
+                persona = _context.Personas.Find(nuevo.PKPersona);
+
+                persona.Nombre = nuevo.Nombre;
+                persona.Apellido = nuevo.Apellido;
+                persona.Correo = nuevo.Correo;
+                persona.edad = nuevo.edad;
+                persona.FKCiudad = nuevo.FKCiudad;
+
+                _context.Personas.Update(persona);
+                _context.SaveChanges();
+            }
+            Console.WriteLine("Se actualizo correctamente");
+           
 
         }
 
-        public void DeletePersona(int PkPersona)
+        public void DeletePersona(Persona idpersona)
         {
+            Persona persona = new Persona();
 
+            using (var _context = new AplicationDBContext())
+            {
+                //uso de find igual a el de persona by id
+                persona = _context.Personas.Find(idpersona.PKPersona);
+
+                _context.Personas.Remove(persona);
+                _context.SaveChanges();
+            }
         }
         
 

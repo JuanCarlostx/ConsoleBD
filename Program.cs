@@ -10,6 +10,9 @@ Console.WriteLine( "Ingrese su edad");
 Console.WriteLine("Ingresa una de las siguientes opciones");
 Console.WriteLine( "1. Listar persona");
 Console.WriteLine( "2. Crear persona");
+Console.WriteLine("3. Actualizar persona");
+Console.WriteLine("4. Eliminar persona");
+Console.WriteLine("5. Buscar por id");
 
 int opcion = int.Parse(Console.ReadLine());
 
@@ -60,6 +63,44 @@ switch (opcion)
         servicios.CreatePersona(persona1);
 
         break; 
+    case 3:
+        Console.WriteLine("Haz seleccionado actualizar persona");
+        Persona persona2 = new Persona();
+
+        Console.WriteLine("Ingrese el id a modificar");
+        persona2.PKPersona = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Ingrese su nombre");
+        persona2.Nombre = Console.ReadLine();
+
+        Console.WriteLine("Ingrese su apellido");
+        persona2.Apellido = Console.ReadLine();
+
+        Console.WriteLine("Ingrese su correo");
+        persona2.Correo = Console.ReadLine();
+
+        Console.WriteLine("Ingrese su edad");
+        persona2.edad = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Ingrese su id de la ciudad");
+        persona2.FKCiudad = int.Parse(Console.ReadLine());
+
+        servicios.UpdatePersona(persona2);
+
+        break;
+    case 4:
+
+        Console.WriteLine("Haz seleccionado eliminar persona");
+        Persona persona3 = new Persona();
+
+        Console.WriteLine("Ingrese el id a eliminar");
+        persona3.PKPersona = int.Parse(Console.ReadLine());
+
+        servicios.DeletePersona(persona3);
+        Console.WriteLine("Se ha elimado con exito");
+
+        break;
+
     default:
 
         break;
